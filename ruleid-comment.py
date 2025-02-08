@@ -6,8 +6,9 @@ def replaceRuleidComments(filePath):
         lines = f.readlines()
     with open(filePath, "w") as f:
         for line in lines:
-            # replace '# <expect-error>
+            # replace '# ruleid: ' with '# <expect-error>'
             line = re.sub(r"#\s*ruleid:\s*.*", "# <expect-error>", line)
+            # replace '# ok: ' with '# <no-error>'
             line = re.sub(r"#\s*ok:\s*.*", "# <no-error>", line)
             f.write(line)
 
